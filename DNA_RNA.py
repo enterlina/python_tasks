@@ -8,13 +8,12 @@
 # оригинального объекта с использованием метода transcribe()
 
 class DNA ( ):
-    # dna_sequence = 'AGCTTAAAAA'
 
-    def __int__(self):
+    def __init__(self):
 
-        # print ( "Enter DNA" )
-        # self.dna_sequence = input ( )
-        self.sequence = 'AGCTTAAAAA'
+        print ( "Enter Sequence" )
+        self.sequence = input ( )
+        # self.sequence = 'AGCTTAAAAA'
         self.length = len ( self.sequence )
         self.rna = self.RNA ( )
 
@@ -23,7 +22,7 @@ class DNA ( ):
         for i in range ( 0 , self.length ):
             if (self.sequence[ i ] == 'C') or (self.sequence[ i ] == 'G'):
                 self.counter_gc += 1
-        self.___percent_gc___ = self.counter_gc / self.length
+        self.___percent_gc___ = self.counter_gc*100 / self.length
         return self.___percent_gc___
 
     def reverse_complement(self):
@@ -34,8 +33,10 @@ class DNA ( ):
 
         return self.___complementary_pair___
 
-    class RNA:
-        def transcribe(self):
+    class RNA ( ):
+        def transcribe(self , DNA):
+            self.length = DNA.length
+            self.sequence = DNA.sequence
             self.transcribe = {'A': 'T' , 'T': 'U' , 'C': 'G' , 'G': 'C'}
             self.___transcribe_sequence___ = ''
             for i in range ( 0 , self.length ):
@@ -43,26 +44,27 @@ class DNA ( ):
             return self.___transcribe_sequence___
 
 
-# class RNA ( DNA ):
-#     def transcribe(self):
-#         self.transcribe = {'A': 'T' , 'T': 'U' , 'C': 'G' , 'G': 'C'}
-#         self.___transcribe_sequence___ = ''
-#         for i in range ( 0 , self.length ):
-#             self.___transcribe_sequence___ += self.transcribe[ self.sequence[ i ] ]
-#         return self.___transcribe_sequence___
+class RNA ( DNA ):
+    pass
+
+    # def transcribe(self):
+    #     self.transcribe = {'A': 'T' , 'T': 'U' , 'C': 'G' , 'G': 'C'}
+    #     self.___transcribe_sequence___ = ''
+    #     for i in range ( 0 , self.length ):
+    #         self.___transcribe_sequence___ += self.transcribe[ self.sequence[ i ] ]
+    #     return self.___transcribe_sequence___
 
 
 print ( '\nDNA' )
 x = DNA ( )
-x.__int__ ( )
-print ( x.gc ( ) )
-print ( x.reverse_complement ( ) )
 
-print ( x.rna.transcribe ( ) )
+print ( 'GC %' , x.gc ( ) )
+print ( 'Reverse' , x.reverse_complement ( ) )
 
-# print ( '\nRNA' )
-# y = RNA ( )
-# y.__int__ ( )
-# print ( y.gc ( ) )
-# print ( y.reverse_complement ( ) )
-# print ( y.transcribe ( ) )
+print ( 'Transcribe' , x.rna.transcribe ( x ) )
+
+print ( '\nRNA' )
+y = RNA ( )
+print ( 'GC %' , y.gc ( ) )
+print ( 'Reverse' , y.reverse_complement ( ) )
+print ( 'Transcribe' , y.rna.transcribe ( x ) )
