@@ -45,7 +45,7 @@ class RNA ( DNA  ):
     def __init__(self , object):
         self.sequence = object
         self.length = len ( self.sequence )
-
+        # return self.sequence
 
 
 sequence1 = 'AGCTTAAAAA'
@@ -57,10 +57,12 @@ print ( 'rna %' , x.rna )
 
 # print ( 'Transcribe' , x.rna.transcribe ( x ) )
 
-# print ( '\nRNA' )
+print ( '\nRNA' )
+
 y = RNA ( sequence1 )
 print ( y.sequence )
-
 print ( 'GC %' , y.gc ( ) )
+print ( 'GC %' , y.transcribe( ) )
+
 # # print ( 'Reverse' , y.reverse_complement ( ) )
-print ( 'Transcribe' , y.transcribe ( ) )
+# print ( 'Transcribe' , y.rna ( ) )
