@@ -52,9 +52,9 @@ sequence1 = 'AGCTTAAAAA'
 x = DNA ( sequence1 )
 print ( 'GC %' , x.gc ( ) )
 print ( 'Reverse' , x.reverse_complement ( ) )
-print ( 'rna %' , x.rna )
-# print ( 'Transcribe' , x.transcribe () )
+print ( 'RNA' , x.rna )
 
+# print ( 'Transcribe' , x.transcribe () )
 # print ( 'Transcribe' , x.rna.transcribe ( x ) )
 
 print ( '\nRNA' )
@@ -62,7 +62,5 @@ print ( '\nRNA' )
 y = RNA ( sequence1 )
 print ( y.sequence )
 print ( 'GC %' , y.gc ( ) )
-print ( 'GC %' , y.transcribe( ) )
+# print ( 'GC %' , y.transcribe( ) )
 
-# # print ( 'Reverse' , y.reverse_complement ( ) )
-# print ( 'Transcribe' , y.rna ( ) )
