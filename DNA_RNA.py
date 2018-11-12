@@ -1,8 +1,5 @@
 class DNA ( object ):
-
     def __init__(self , object):
-        # print ( "Enter Sequence" )
-        # self.sequence = input ( )
         self.sequence = object
         self.length = len ( self.sequence )
         self.rna = self.transcribe ( )
@@ -37,11 +34,8 @@ class DNA ( object ):
 
 class RNA ( DNA , object ):
     def __init__(self , object):
-        # print ( "Enter Sequence" )
-        # self.sequence = input ( )
         self.sequence = object
         self.length = len ( self.sequence )
-        # return self
 
 
 #
