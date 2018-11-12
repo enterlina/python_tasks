@@ -51,7 +51,10 @@ class RNA ( DNA ):
 
 
 sequence1 = 'AGCTTAAAAA'
+
+print ( '\nDNA' )
 x = DNA ( sequence1 )
+print ( x.sequence )
 print ( 'GC %' , x.gc ( ) )
 print ( 'Reverse' , x.reverse_complement ( ) )
 print ( 'RNA' , x.rna )
