@@ -7,7 +7,7 @@
 # Создавать объект класса Rna, соответствующий результату транскрипции последовательности оригинального объекта с использованием метода transcribe()
 
 
-class DNA ( object ):
+class DNA ( ):
     def __init__(self , object):
         self.sequence = object
         self.length = len ( self.sequence )
@@ -41,17 +41,15 @@ class DNA ( object ):
         return RNA ( self.___transcribe_sequence___ )
 
 
-class RNA ( DNA , object ):
+class RNA ( DNA  ):
     def __init__(self , object):
         self.sequence = object
         self.length = len ( self.sequence )
 
 
-#
+
 sequence1 = 'AGCTTAAAAA'
-
 x = DNA ( sequence1 )
-
 print ( 'GC %' , x.gc ( ) )
 print ( 'Reverse' , x.reverse_complement ( ) )
 print ( 'rna %' , x.rna )
