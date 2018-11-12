@@ -17,7 +17,7 @@ class RNA (str ):
 
     def gc(self):
         counter_gc = 0
-        for i in range ( 0 , self.length ):
+        for i in range ( self.length ):
             if (self.sequence[ i ] == 'C') or (self.sequence[ i ] == 'G'):
                 counter_gc += 1
         percent_gc = counter_gc * 100 / self.length
@@ -27,7 +27,7 @@ class RNA (str ):
         complementary_sequence = {'A': 'U' , 'U': 'A' , 'C': 'G' , 'G': 'C' , 'a': 'u' , 'u': 'a' , 'c': 'g' ,
                                        'g': 'c'}
         complementary_pair = list (
-            '' + complementary_sequence[ self.sequence[ i ] ] for i in range ( 0 , self.length ) )
+            '' + complementary_sequence[ self.sequence[ i ] ] for i in range ( self.length ) )
         return ''.join ( complementary_pair[::-1] )
 
 
@@ -41,20 +41,20 @@ class DNA ( RNA ):
         complementary_sequence = {'A': 'T' , 'T': 'A' , 'C': 'G' , 'G': 'C' , 'a': 't' , 't': 'a' , 'c': 'g' ,
                                   'g': 'c'}
         complementary_pair = list (
-            '' + complementary_sequence[ self.sequence[ i ] ] for i in range ( 0 , self.length ) )
+            '' + complementary_sequence[ self.sequence[ i ] ] for i in range ( self.length ) )
         return ''.join ( complementary_pair[::-1] )
 
     def transcribe(self)->RNA:
         transcribe = {'A': 'U' , 'T': 'A' , 'C': 'G' , 'G': 'C' ,  'a': 'u' , 't': 'a' , 'c': 'g' ,
                            'g': 'c' }
 
-        transcribe_sequence = list (''+transcribe[ self.sequence[ i ] ]  for i in range ( 0 , self.length ))
+        transcribe_sequence = list (''+transcribe[ self.sequence[ i ] ]  for i in range (  self.length ))
 
         return RNA ( ''.join (transcribe_sequence[::-1]) )
 
 
 
-#
+
 # print ( '\nDNA' )
 #
 # sequence1 = 'TAGC'
