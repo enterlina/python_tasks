@@ -21,33 +21,33 @@ class DNA ( ):
         for i in range ( 0 , self.length ):
             if (self.sequence[ i ] == 'C') or (self.sequence[ i ] == 'G'):
                 self.counter_gc += 1
-        self.___percent_gc___ = self.counter_gc * 100 / self.length
-        return self.___percent_gc___
+        self.percent_gc = self.counter_gc * 100 / self.length
+        return self.percent_gc
 
     def reverse_complement(self):
         self.complementary_sequence = {'A': 'T' , 'T': 'A' , 'C': 'G' , 'G': 'C' , 'a': 't' , 't': 'a' , 'c': 'g' ,
                                        'g': 'c'}
-        self.___complementary_pair___ = ' '
+        self.complementary_pair = ' '
         for i in range ( 0 , self.length ):
-            self.___complementary_pair___ += self.complementary_sequence[ self.sequence[ i ] ]
+            self.complementary_pair += self.complementary_sequence[ self.sequence[ i ] ]
 
-        return self.___complementary_pair___
+        return self.complementary_pair
 
     def transcribe(self):
         self.transcribe = {'A': 'T' , 'T': 'U' , 'C': 'G' , 'G': 'C' , 'U': 'U' , 'a': 't' , 't': 'u' , 'c': 'g' ,
                            'g': 'c' , 'u': 'u'}
-        self.___transcribe_sequence___ = ''
+        self.transcribe_sequence = ''
         for i in range ( 0 , self.length ):
-            self.___transcribe_sequence___ += self.transcribe[ self.sequence[ i ] ]
+            self.transcribe_sequence += self.transcribe[ self.sequence[ i ] ]
 
-        return RNA ( self.___transcribe_sequence___ )
+        return RNA ( self.transcribe_sequence )
 
 
 class RNA ( DNA ):
     def __init__(self , object):
         self.sequence = object
         self.length = len ( self.sequence )
-        # return self.sequence
+
 
 
 sequence1 = 'AGCTTAAAAA'
@@ -57,7 +57,7 @@ x = DNA ( sequence1 )
 print ( x.sequence )
 print ( 'GC %' , x.gc ( ) )
 print ( 'Reverse' , x.reverse_complement ( ) )
-print ( 'RNA' , x.rna )
+print ( 'RNA' , x.rna.sequence )
 
 # print ( 'Transcribe' , x.transcribe () )
 # print ( 'Transcribe' , x.rna.transcribe ( x ) )
