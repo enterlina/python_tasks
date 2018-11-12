@@ -1,11 +1,14 @@
-class DNA ( ):
+class DNA ( object ):
 
-    def __init__(self):
+    def __init__(self , object):
         # print ( "Enter Sequence" )
         # self.sequence = input ( )
-        self.sequence = 'AGCTTAAAAA'
+        self.sequence = object
         self.length = len ( self.sequence )
-        # self.rna = self.RNA ( )
+        self.rna = self.transcribe ( )
+        if set(self.sequence)-set('acgutACGUT') != set():
+            raise Exception('"'+self.sequence+'" is inappropriate due to the presence of characters '
+                            +str(set(self.sequence)-set('acguACGU')))
 
     def gc(self):
         self.counter_gc = 0
@@ -16,7 +19,7 @@ class DNA ( ):
         return self.___percent_gc___
 
     def reverse_complement(self):
-        self.complementary_sequence = {'A': 'T' , 'T': 'A' , 'C': 'G' , 'G': 'C'}
+        self.complementary_sequence = {'A': 'T' , 'T': 'A' , 'C': 'G' , 'G': 'C','a': 't' , 't': 'a' , 'c': 'g' , 'g': 'c'}
         self.___complementary_pair___ = ' '
         for i in range ( 0 , self.length ):
             self.___complementary_pair___ += self.complementary_sequence[ self.sequence[ i ] ]
@@ -24,34 +27,39 @@ class DNA ( ):
         return self.___complementary_pair___
 
     def transcribe(self):
-        self.transcribe = {'A': 'T' , 'T': 'U' , 'C': 'G' , 'G': 'C', 'U': 'U'}
+        self.transcribe = {'A': 'T' , 'T': 'U' , 'C': 'G' , 'G': 'C' , 'U': 'U','a': 't' , 't': 'u' , 'c': 'g' , 'g': 'c' , 'u': 'u'}
         self.___transcribe_sequence___ = ''
         for i in range ( 0 , self.length ):
             self.___transcribe_sequence___ += self.transcribe[ self.sequence[ i ] ]
-        return RNA ( self.___transcribe_sequence___)
+
+        return RNA ( self.___transcribe_sequence___ )
 
 
-class RNA ( DNA ):
-    def __init__(self, sequence1):
+class RNA ( DNA , object ):
+    def __init__(self , object):
         # print ( "Enter Sequence" )
         # self.sequence = input ( )
-        self.sequence = sequence1
+        self.sequence = object
         self.length = len ( self.sequence )
+        # return self
 
 
-print ( '\nDNA' )
-x = DNA ( )
+#
+sequence1 = 'AGCTTAAAAA'
+# print ( '\nDNA' )
+x = DNA ( sequence1 )
 
 print ( 'GC %' , x.gc ( ) )
 print ( 'Reverse' , x.reverse_complement ( ) )
-print ( 'Transcribe' , x.transcribe ( ))
-
-
+print ( 'rna %' , x.rna )
+# print ( 'Transcribe' , x.transcribe () )
 
 # print ( 'Transcribe' , x.rna.transcribe ( x ) )
 
 # print ( '\nRNA' )
-y = RNA ( "ACUU")
+y = RNA ( sequence1 )
+print ( y.sequence )
+
 print ( 'GC %' , y.gc ( ) )
-# print ( 'Reverse' , y.reverse_complement ( ) )
+# # print ( 'Reverse' , y.reverse_complement ( ) )
 print ( 'Transcribe' , y.transcribe ( ) )
