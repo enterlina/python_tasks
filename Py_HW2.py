@@ -14,6 +14,7 @@ def tracefoo(target_function):
         return tracefunc
     sys.settrace(tracefunc)
     target_function()
+    sys.settrace(None)
     return
 
 tracefoo(foo)
